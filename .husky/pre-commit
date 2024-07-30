@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
-. "$(dirname "$0")/h"
 
-npx expo lint
+
+#npx expo lint
+npm run lint-fix
