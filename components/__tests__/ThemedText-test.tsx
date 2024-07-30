@@ -1,10 +1,11 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
-
 import { Text } from 'react-native';
 
-it(`renders correctly`, () => {
-  const tree = renderer.create(<Text>Snapshot test!</Text>).toJSON();
+import renderer from 'react-test-renderer';
 
-  expect(tree).toMatchSnapshot();
+describe('Index Component', () => {
+  it('renders correctly', () => {
+    const tree = renderer.create(<Text>Hello World!</Text>).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

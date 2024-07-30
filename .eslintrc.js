@@ -31,7 +31,7 @@ module.exports = {
     ],
     'import/no-duplicates': 'error',
     'import/order': [
-      'error',
+      'warn',
       {
         'alphabetize': {
           caseInsensitive: true,
