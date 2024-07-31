@@ -69,6 +69,7 @@ module.exports = {
         arrowParens: 'avoid',
         bracketSameLine: true,
         bracketSpacing: true,
+        endOfLine: 'auto',
         quoteProps: 'consistent',
         singleQuote: true,
         tabWidth: 2,
