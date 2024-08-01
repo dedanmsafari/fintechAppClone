@@ -37,7 +37,7 @@
             "./assets/fonts/RobotoMono-Bold.ttf",
             "./assets/fonts/RobotoMono-Italic.ttf",
             "./assets/fonts/RobotoMono-Medium.ttf",
-            "./assets/fonts//RobotoMono-Regular.ttf",
+            "./assets/fonts/RobotoMono-Regular.ttf",
             "./assets/fonts/RobotoMono-Thin.ttf",
             "./assets/fonts/SpaceMono-Regular.ttf",
             "node_modules/@expo-google-fonts/noto-sans/NotoSans_300Light.ttf",
@@ -46,7 +46,8 @@
             "node_modules/@expo-google-fonts/noto-sans/NotoSans_700Bold.ttf"
           ]
         }
-      ]
+      ],
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true
