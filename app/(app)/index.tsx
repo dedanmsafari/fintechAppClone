@@ -9,6 +9,7 @@ import {
 import { useAssets } from 'expo-asset';
 import { ResizeMode, Video } from 'expo-av';
 import { Link } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
@@ -18,6 +19,7 @@ export default function Index() {
 
   return (
     <View style={styles.view}>
+      <StatusBar style="light" />
       {assets && (
         <Video
           resizeMode={ResizeMode.COVER}
