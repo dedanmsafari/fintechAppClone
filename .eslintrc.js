@@ -8,7 +8,7 @@ module.exports = {
     'prettier',
     'eslint:recommended',
     'plugin:react-hooks/recommended',
-    'plugin:react-native/all',
+    // 'plugin:react-native/all',
     'plugin:promise/recommended',
   ],
   overrides: [],
@@ -79,12 +79,12 @@ module.exports = {
     ],
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
-    // 'react-native/no-single-element-style-arrays': 2,
-    // 'react-native/no-unused-styles': 2,
-    // 'react-native/split-platform-components': 2,
+    'react-native/no-color-literals': 2,
+    'react-native/no-raw-text': 2, //? if you do not have a wrapper around the text component you the react native plugin to enable all rules
+    'react-native/no-single-element-style-arrays': 2,
+    'react-native/no-unused-styles': 2,
+    'react-native/split-platform-components': 2,
     // 'react-native/no-inline-styles': 2,
-    // 'react-native/no-color-literals': 2,
-    // "react-native/no-raw-text": 2, //? if you do not have a wrapper around the text component you the react native plugin to enable all rules
 
     'sort-destructure-keys/sort-destructure-keys': [
       2,
