@@ -59,6 +59,7 @@ const Page = () => {
 
         <View style={{ flex: 1 }} />
         <TouchableOpacity
+          disabled={!phoneNumber}
           style={[
             defaultStyles.pillButton,
             phoneNumber !== '' ? styles.enabled : styles.disabled,
