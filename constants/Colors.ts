@@ -5,5 +5,7 @@ export default {
   lightGray: '#D8DCE2',
   primary: '#3D38ED',
   primaryMuted: '#C9C8FA',
+  tint: 'rgba(0,0,0,0.05)',
+  transparent: 'transparent',
   white: '#fff',
 };
