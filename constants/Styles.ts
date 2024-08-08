@@ -34,6 +34,13 @@ export const defaultStyles = StyleSheet.create({
     fontSize: 40,
     fontWeight: '700',
   },
+  loadingOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: 'center',
+    backgroundColor: Colors.overlay,
+    justifyContent: 'center',
+    zIndex: 1000,
+  },
   pillButton: {
     alignItems: 'center',
     borderRadius: 40,
