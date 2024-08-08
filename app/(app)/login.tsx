@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import {
-  Alert,
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
@@ -11,10 +10,12 @@ import {
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
+import { useSession } from '@/context/authContext';
 
 enum SignInType {
   Phone,
@@ -25,11 +26,15 @@ enum SignInType {
 
 const Page = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
+  const countryCode = '+1';
+  const { logIn } = useSession();
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
 
   const onSignIn = async (type: SignInType) => {
-    if (type === SignInType.Apple) {
-      Alert.alert('Yo');
+    if (type === SignInType.Phone) {
+      logIn(countryCode, phoneNumber);
+    } else {
+      router.replace('/(root)/(tabs)/home');
     }
   };
 
