@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  ActivityIndicator,
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
@@ -13,18 +14,25 @@ import { TextInput } from 'react-native-gesture-handler';
 
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
+import { useSession } from '@/context/authContext';
 
 const Page = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
+  const countryCode = '+1';
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
 
-  const onSignUp = () => {};
+  const { loading, signUp } = useSession();
 
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior="padding"
       keyboardVerticalOffset={keyboardVerticalOffset}>
+      {loading && (
+        <View style={defaultStyles.loadingOverlay}>
+          <ActivityIndicator size="large" color="#fff" />
+        </View>
+      )}
       <View style={defaultStyles.container}>
         <Text style={defaultStyles.header}>Let's get started!</Text>
         <Text style={defaultStyles.descriptionText}>
@@ -36,7 +44,7 @@ const Page = () => {
             style={styles.input}
             placeholder="Country code"
             placeholderTextColor={Colors.gray}
-            value="+254"
+            value={countryCode}
             editable={false}
           />
           <TextInput
@@ -65,7 +73,7 @@ const Page = () => {
             phoneNumber !== '' ? styles.enabled : styles.disabled,
             { marginBottom: 20 },
           ]}
-          onPress={onSignUp}>
+          onPress={() => signUp(countryCode, phoneNumber)}>
           <Text style={defaultStyles.buttonText}>Sign up</Text>
         </TouchableOpacity>
       </View>
