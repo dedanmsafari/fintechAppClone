@@ -10,6 +10,7 @@ import Colors from '@/constants/Colors';
 
 const _layout = () => {
   const { bottom } = useSafeAreaInsets();
+
   return (
     <Tabs
       screenOptions={{
@@ -44,7 +45,6 @@ const _layout = () => {
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name="registered" size={size} color={color} />
           ),
-          title: 'Home',
         }}
       />
       <Tabs.Screen
