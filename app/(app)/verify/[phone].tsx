@@ -1,6 +1,13 @@
 import React, { Fragment, useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
+import { useHeaderHeight } from '@react-navigation/elements';
 import { Link, useLocalSearchParams } from 'expo-router';
 import {
   CodeField,
@@ -20,7 +27,8 @@ const Phone = () => {
     phone: string;
     signin: string;
   }>();
-  const { code, setCode, signIn, verify } = useSession();
+  const { code, loading, setCode, signIn, verify } = useSession();
+  const headerHeight = useHeaderHeight();
   const ref = useBlurOnFulfill({ cellCount: CELL_COUNT, value: code });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     setValue: setCode,
@@ -30,15 +38,24 @@ const Phone = () => {
   useEffect(() => {
     if (code.length === 6) {
       if (signin === 'true') {
+        signIn();
+        setCode('');
+      } else {
         verify();
+        setCode('');
       }
-    } else {
-      signIn();
     }
-  }, [code, signIn, signin, verify]);
+  }, [code, setCode, signIn, signin, verify]);
 
+  if (loading) {
+    return (
+      <View style={defaultStyles.loadingOverlay}>
+        <ActivityIndicator size="large" color={Colors.gray} />
+      </View>
+    );
+  }
   return (
-    <View style={defaultStyles.container}>
+    <View style={[defaultStyles.container, { paddingTop: headerHeight }]}>
       <Text style={defaultStyles.header}>6-digit code</Text>
       <Text style={defaultStyles.descriptionText}>
         Code sent to {phone} unless you already have an account
@@ -71,13 +88,21 @@ const Phone = () => {
         )}
       />
 
-      <Link href="/login" replace asChild>
-        <TouchableOpacity>
-          <Text style={defaultStyles.textLink}>
-            Already have an account? Log in
-          </Text>
-        </TouchableOpacity>
-      </Link>
+      {signin ? (
+        <Link href="/signUp" replace asChild>
+          <TouchableOpacity>
+            <Text style={defaultStyles.textLink}>New to the app? Sign Up</Text>
+          </TouchableOpacity>
+        </Link>
+      ) : (
+        <Link href="/login" replace asChild>
+          <TouchableOpacity>
+            <Text style={defaultStyles.textLink}>
+              Already have an account? Log in
+            </Text>
+          </TouchableOpacity>
+        </Link>
+      )}
     </View>
   );
 };
