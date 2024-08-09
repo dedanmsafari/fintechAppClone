@@ -1,12 +1,28 @@
-import { TouchableOpacity } from 'react-native';
+import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
-import { Link, Stack, useRouter } from 'expo-router';
+import { Link, Redirect, Stack, useRouter } from 'expo-router';
 
 import Colors from '@/constants/Colors';
+import { defaultStyles } from '@/constants/Styles';
+import { useSession } from '@/context/authContext';
 
 export default function RootLayout() {
+  const { isLoading, session } = useSession();
   const router = useRouter();
+
+  if (session) {
+    return <Redirect href="/(root)/(tabs)/home" />;
+  }
+
+  if (isLoading) {
+    return (
+      <View style={defaultStyles.loadingOverlay}>
+        <ActivityIndicator size="large" color="#fff" />
+      </View>
+    );
+  }
+
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -29,7 +45,7 @@ export default function RootLayout() {
         options={{
           headerBackTitle: '',
           headerLeft: () => (
-            <TouchableOpacity onPress={() => router.back()}>
+            <TouchableOpacity onPress={() => router.replace('/')}>
               <Ionicons name="arrow-back" size={34} color={Colors.dark} />
             </TouchableOpacity>
           ),
@@ -56,6 +72,22 @@ export default function RootLayout() {
           headerStyle: { backgroundColor: Colors.background },
           headerTitle: 'Help',
           headerTitleAlign: 'center',
+          presentation: 'modal',
+        }}
+      />
+      <Stack.Screen
+        name="verify/[phone]"
+        options={{
+          headerBackTitle: '',
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => router.replace('/')}>
+              <Ionicons name="arrow-back" size={34} color={Colors.dark} />
+            </TouchableOpacity>
+          ),
+          headerShadowVisible: false,
+          headerTitle: 'Verify',
+          headerTitleAlign: 'center',
+          headerTransparent: true,
           presentation: 'modal',
         }}
       />
