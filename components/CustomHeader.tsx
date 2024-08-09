@@ -28,7 +28,7 @@ const CustomHeader = () => {
             paddingHorizontal: 20,
           },
         ]}>
-        <Link href={'/(root)/(modal)/account'} asChild>
+        <Link href={'/(modal)/account'} asChild>
           <TouchableOpacity
             style={{
               alignItems: 'center',
