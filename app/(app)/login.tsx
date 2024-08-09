@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import {
+  ActivityIndicator,
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
@@ -10,7 +11,6 @@ import {
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Colors from '@/constants/Colors';
@@ -27,17 +27,14 @@ enum SignInType {
 const Page = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const countryCode = '+1';
-  const { logIn } = useSession();
+  const { loading, logIn } = useSession();
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
 
   const onSignIn = async (type: SignInType) => {
     if (type === SignInType.Phone) {
       logIn(countryCode, phoneNumber);
-    } else {
-      router.replace('/(root)/(tabs)/home');
     }
   };
-
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -54,7 +51,7 @@ const Page = () => {
             style={styles.input}
             placeholder="Country code"
             placeholderTextColor={Colors.gray}
-            value="+254"
+            value={countryCode}
             editable={false}
           />
           <TextInput
@@ -68,14 +65,18 @@ const Page = () => {
         </View>
 
         <TouchableOpacity
-          disabled={!phoneNumber}
+          disabled={!phoneNumber || loading}
           style={[
             defaultStyles.pillButton,
-            phoneNumber !== '' ? styles.enabled : styles.disabled,
+            phoneNumber !== '' && !loading ? styles.enabled : styles.disabled,
             { marginBottom: 20 },
           ]}
           onPress={() => onSignIn(SignInType.Phone)}>
-          <Text style={defaultStyles.buttonText}>Continue</Text>
+          {loading ? (
+            <ActivityIndicator color={Colors.gray} />
+          ) : (
+            <Text style={defaultStyles.buttonText}>Continue</Text>
+          )}
         </TouchableOpacity>
 
         <View style={{ alignItems: 'center', flexDirection: 'row', gap: 16 }}>
@@ -97,6 +98,7 @@ const Page = () => {
         </View>
 
         <TouchableOpacity
+          disabled={loading}
           onPress={() => onSignIn(SignInType.Email)}
           style={[
             defaultStyles.pillButton,
@@ -113,6 +115,7 @@ const Page = () => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
+          disabled={loading}
           onPress={() => onSignIn(SignInType.Google)}
           style={[
             defaultStyles.pillButton,
@@ -129,6 +132,7 @@ const Page = () => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
+          disabled={loading}
           onPress={() => onSignIn(SignInType.Apple)}
           style={[
             defaultStyles.pillButton,
