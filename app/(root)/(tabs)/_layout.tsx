@@ -26,13 +26,16 @@ const _layout = () => {
             }}
           />
         ),
+
         tabBarStyle: {
           backgroundColor: 'transparent',
           borderTopWidth: 0,
           bottom: 0,
           elevation: 0,
           left: 0,
+          minHeight: 70,
           paddingBottom: bottom + 10,
+          paddingTop: 10,
           position: 'absolute',
           right: 0,
         },
