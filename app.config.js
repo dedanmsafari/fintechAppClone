@@ -25,11 +25,16 @@ module.exports = {
     },
     web: {
       bundler: 'metro',
-      output: 'static',
+      output: 'server',
       favicon: './assets/images/favicon.png',
     },
     plugins: [
-      'expo-router',
+      [
+        'expo-router',
+        {
+          origin: 'https://dedanmsafari.dev/',
+        },
+      ],
       'expo-secure-store',
       [
         'expo-font',
@@ -55,6 +60,7 @@ module.exports = {
     },
     extra: {
       clerkPublishableKey: process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY,
+      coinMarketCapSecretKey: process.env.CRYPTO_API_KEY,
     },
   },
 };
