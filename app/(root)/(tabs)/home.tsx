@@ -12,6 +12,7 @@ import { useHeaderHeight } from '@react-navigation/elements';
 
 import Dropdown from '@/components/Dropdown';
 import RoundBtn from '@/components/RoundBtn';
+import WidgetList from '@/components/SortableList/WidgetList';
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
 import { useBalanceStore } from '@/store/balanceStore';
@@ -34,7 +35,7 @@ const Home = () => {
   return (
     <ScrollView
       style={{ backgroundColor: Colors.background }}
-      contentContainerStyle={{ paddingBottom: 120, paddingTop: headerHeight }}>
+      contentContainerStyle={{ paddingTop: headerHeight }}>
       <View style={styles.account}>
         <View style={styles.row}>
           <Text style={styles.balance}>{balance()}</Text>
@@ -92,6 +93,7 @@ const Home = () => {
         ))}
       </View>
       <Text style={defaultStyles.sectionHeader}>Widgets</Text>
+      <WidgetList />
     </ScrollView>
   );
 };
