@@ -17,7 +17,11 @@ import Colors from '@/constants/Colors';
 const CustomHeader = () => {
   const { top } = useSafeAreaInsets();
   return (
-    <BlurView intensity={80} tint={'extraLight'} style={{ paddingTop: top }}>
+    <BlurView
+      experimentalBlurMethod="dimezisBlurView"
+      intensity={50}
+      tint={'extraLight'}
+      style={{ flex: 1, paddingTop: top }}>
       <View
         style={[
           styles.container,
