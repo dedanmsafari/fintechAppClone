@@ -18,8 +18,8 @@ const _layout = () => {
         tabBarBackground: () => (
           <BlurView
             experimentalBlurMethod="dimezisBlurView"
-            intensity={100}
-            tint={'extraLight'}
+            intensity={50}
+            tint={'light'}
             style={{
               backgroundColor: Colors.tint,
               flex: 1,
