@@ -32,7 +32,7 @@ const Crypto = () => {
   return (
     <ScrollView
       style={{ backgroundColor: Colors.background }}
-      contentContainerStyle={{ paddingTop: headerHeight }}>
+      contentContainerStyle={{ paddingBottom: 80, paddingTop: headerHeight }}>
       <Text style={defaultStyles.sectionHeader}>Latest Crypto</Text>
       <View style={defaultStyles.block}>
         {currencies.data?.map((currency: Currency) => (
