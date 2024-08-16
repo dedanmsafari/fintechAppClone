@@ -12,7 +12,7 @@ export default function RootLayout() {
   const router = useRouter();
 
   if (session) {
-    return <Redirect href="/(root)/(tabs)/crypto" />;
+    return <Redirect href="/(root)/(tabs)/home" />;
   }
 
   if (isLoading) {
