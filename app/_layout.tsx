@@ -7,6 +7,7 @@ import { Slot } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import SessionProvider from '@/context/authContext';
+import InactivityProvider from '@/context/inactivityContext';
 import tokenCache from '@/utils/clerkTokenCache';
 
 const publishableKey = Constants.expoConfig?.extra?.clerkPublishableKey;
@@ -24,9 +25,11 @@ export default function RootLayout() {
     <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
       <QueryClientProvider client={queryClient}>
         <SessionProvider>
-          <GestureHandlerRootView style={{ flex: 1 }}>
-            <Slot />
-          </GestureHandlerRootView>
+          <InactivityProvider>
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <Slot />
+            </GestureHandlerRootView>
+          </InactivityProvider>
         </SessionProvider>
       </QueryClientProvider>
     </ClerkProvider>
