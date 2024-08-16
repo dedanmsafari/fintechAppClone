@@ -27,6 +27,13 @@ const AppLayout = () => {
         }}
       />
       <Stack.Screen
+        name="(modal)/lock"
+        options={{
+          animation: 'none',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="crypto/[id]"
         options={{
           headerLargeTitle: true,
