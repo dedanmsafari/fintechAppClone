@@ -53,6 +53,12 @@ module.exports = {
           ],
         },
       ],
+      [
+        'expo-local-authentication',
+        {
+          faceIDPermission: 'Allow $(PRODUCT_NAME) to use Face ID.',
+        },
+      ],
       'expo-asset',
     ],
     experiments: {

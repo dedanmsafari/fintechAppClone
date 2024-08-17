@@ -55,7 +55,8 @@
     "victory-native": "^41.0.2",
     "zeego": "^1.10.0",
     "zustand": "^4.5.4",
-    "expo-haptics": "~13.0.1"
+    "expo-haptics": "~13.0.1",
+    "expo-local-authentication": "~14.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
