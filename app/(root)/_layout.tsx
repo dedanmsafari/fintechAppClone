@@ -19,11 +19,15 @@ const AppLayout = () => {
       <Stack.Screen
         name="(modal)/account"
         options={{
-          headerLeft: () => <></>,
-          headerShown: true,
+          animation: 'fade',
+          headerLeft: () => (
+            <TouchableOpacity onPress={router.back}>
+              <Ionicons name="close-outline" size={34} color={Colors.white} />
+            </TouchableOpacity>
+          ),
           headerTitle: '',
           headerTransparent: true,
-          presentation: 'modal',
+          presentation: 'transparentModal',
         }}
       />
       <Stack.Screen
