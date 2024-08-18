@@ -18,7 +18,7 @@ module.exports = {
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: './assets/images/adaptive-icon.png',
+        foregroundImage: './assets/images/icon.png',
         backgroundColor: '#ffffff',
       },
       package: 'com.dedan_msafari.fintechClone',
