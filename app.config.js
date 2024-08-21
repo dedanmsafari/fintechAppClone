@@ -67,6 +67,9 @@ module.exports = {
     extra: {
       clerkPublishableKey: process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY,
       coinMarketCapSecretKey: process.env.CRYPTO_API_KEY,
+      eas: {
+        projectId: '95b7d6d4-6218-43ab-94f5-3ed4570da16f',
+      },
     },
   },
 };
