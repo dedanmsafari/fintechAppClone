@@ -32,8 +32,9 @@ const Lock = () => {
   const codeLength = Array(6).fill(0);
   const router = useRouter();
 
-  const offset = useSharedValue(0);
+  const offset = useSharedValue(0); //?Animation point of origin
 
+  //?styles to be aplpied to animated component
   const style = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: offset.value }],
@@ -48,6 +49,7 @@ const Lock = () => {
       if (code.join('') === '111111') {
         router.replace('/(root)/(tabs)/home');
       } else {
+        //?Set the  value to something
         offset.value = withSequence(
           withTiming(-OFFSET, { duration: TIME / 2 }),
           withRepeat(withTiming(OFFSET, { duration: TIME }), 4, true),
