@@ -3,9 +3,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 /* eslint-disable no-undef */
 
-import Constants from 'expo-constants';
-
-const API_KEY = Constants.expoConfig?.extra?.coinMarketCapSecretKey;
+const API_KEY = process.env.CRYPTO_API_KEY;
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
