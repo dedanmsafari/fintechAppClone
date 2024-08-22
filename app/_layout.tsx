@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 
 import { ClerkProvider } from '@clerk/clerk-expo';
@@ -11,6 +12,8 @@ import InactivityProvider from '@/context/inactivityContext';
 import tokenCache from '@/utils/clerkTokenCache';
 
 const publishableKey = Constants.expoConfig?.extra?.clerkPublishableKey;
+
+console.log('Publishable Key in React Native Component:', publishableKey);
 
 if (!publishableKey) {
   throw new Error(
