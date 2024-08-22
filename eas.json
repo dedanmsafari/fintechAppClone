@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 10.2.4"
+    "version": ">= 10.2.4",
+    "appVersionSource": "remote"
   },
   "build": {
     "development:simulator": {
@@ -17,9 +18,21 @@
     "preview": {
       "distribution": "internal"
     },
-    "production": {}
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "@env:EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY",
+        "CRYPTO_API_KEY": "@env:CRYPTO_API_KEY"
+      }
+    }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "./fintechclone-2a6cc5986d56.json",
+        "track": "internal",
+        "releaseStatus": "draft"
+      }
+    }
   }
 }
