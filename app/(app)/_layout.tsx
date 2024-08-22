@@ -7,6 +7,8 @@ import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
 import { useSession } from '@/context/authContext';
 
+export { ErrorBoundary } from '@/utils/errorBoundary';
+
 export default function RootLayout() {
   const { isLoading, session } = useSession();
   const router = useRouter();
