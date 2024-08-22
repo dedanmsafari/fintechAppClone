@@ -19,11 +19,7 @@
       "distribution": "internal"
     },
     "production": {
-      "autoIncrement": true,
-      "env": {
-        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "@env:EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY",
-        "CRYPTO_API_KEY": "@env:CRYPTO_API_KEY"
-      }
+      "autoIncrement": true
     }
   },
   "submit": {

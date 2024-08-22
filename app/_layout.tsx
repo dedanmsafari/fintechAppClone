@@ -11,21 +11,23 @@ import SessionProvider from '@/context/authContext';
 import InactivityProvider from '@/context/inactivityContext';
 import tokenCache from '@/utils/clerkTokenCache';
 
-const publishableKey = Constants.expoConfig?.extra?.clerkPublishableKey;
+// const publishableKey = Constants.expoConfig?.extra?.clerkPublishableKey;
 
-console.log('Publishable Key in React Native Component:', publishableKey);
+// console.log('Publishable Key in React Native Component:', publishableKey);
 
-if (!publishableKey) {
-  throw new Error(
-    'Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env'
-  );
-}
+// if (!publishableKey) {
+//   throw new Error(
+//     'Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env'
+//   );
+// }
 
 const queryClient = new QueryClient();
 
 export default function RootLayout() {
   return (
-    <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
+    <ClerkProvider
+      tokenCache={tokenCache}
+      publishableKey={Constants.expoConfig?.extra?.clerkPublishableKey}>
       <QueryClientProvider client={queryClient}>
         <SessionProvider>
           <InactivityProvider>
